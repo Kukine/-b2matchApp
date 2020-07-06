@@ -36,8 +36,12 @@ public class EventController {
     }
 
     @PostMapping("")
-    public ResponseEntity<EventDTO> createEvent(@RequestBody EventDTO eventDTO){
-        return ResponseEntity.ok(this.eventService.createEvent(eventDTO));
+    public ResponseEntity<?> createEvent(@RequestBody EventDTO eventDTO){
+        try{
+            return ResponseEntity.ok(this.eventService.createEvent(eventDTO));
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @PostMapping("/user")
