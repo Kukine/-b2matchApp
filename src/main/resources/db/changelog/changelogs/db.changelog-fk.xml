@@ -1,0 +1,58 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="kukine" id="changelog-1.0">
+        <addForeignKeyConstraint baseTableName="users"
+                                 baseColumnNames="organization_id"
+                                 constraintName="fk_user_organization_id"
+                                 referencedTableName="organizations"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="meeting"
+                                 baseColumnNames="event_id"
+                                 constraintName="fk_meeting_event_id"
+                                 referencedTableName="event"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="meeting"
+                                 baseColumnNames="organizer_id"
+                                 constraintName="fk_meeting_user_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="invitation"
+                                 baseColumnNames="sender_id"
+                                 constraintName="fk_invitation_sender_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="invitation"
+                                 baseColumnNames="recipient_id"
+                                 constraintName="fk_invitation_recipient_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="invitation"
+                                 baseColumnNames="meeting_id"
+                                 constraintName="fk_invitation_meeting_id"
+                                 referencedTableName="meeting"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="user_events"
+                                 baseColumnNames="user_id"
+                                 constraintName="fk_user_events_map_user_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="user_events"
+                                 baseColumnNames="event_id"
+                                 constraintName="fk_user_events_map_event_id"
+                                 referencedTableName="event"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="user_meetings"
+                                 baseColumnNames="user_id"
+                                 constraintName="fk_user_meetings_map_user_id"
+                                 referencedTableName="users"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="user_meetings"
+                                 baseColumnNames="meeting_id"
+                                 constraintName="fk_user_meetings_map_meeting_id"
+                                 referencedTableName="meeting"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

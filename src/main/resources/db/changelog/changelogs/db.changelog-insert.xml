@@ -1,0 +1,58 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="luka" id="changelog-1.0">
+        <insert tableName="organizations">
+            <column name="name">FER</column>
+            <column name="address">Unska 3</column>
+        </insert>
+        <insert tableName="organizations">
+            <column name="name">Google</column>
+            <column name="address">Mountain View</column>
+        </insert>
+        <insert tableName="users">
+            <column name="name">Ivica</column>
+            <column name="surname">Horvat</column>
+            <column name="email">ihorvat@gmail.com</column>
+            <column name="username">ivek2</column>
+            <column name="password">pass1</column>
+            <column name="organization_id">1</column>
+        </insert>
+        <insert tableName="users">
+            <column name="name">Stjepan</column>
+            <column name="surname">Stjepanovski</column>
+            <column name="email">stipe@gmail.com</column>
+            <column name="username">Stipica123</column>
+            <column name="password">pass2</column>
+            <column name="organization_id">2</column>
+        </insert>
+        <insert tableName="event">
+            <column name="name">JobFair</column>
+            <column name="start_time">2020-05-20T12:00:00</column>
+            <column name="end_time">2020-05-24T12:00:00</column>
+            <column name="location">FER</column>
+        </insert>
+        <insert tableName="user_events">
+            <column name="user_id">1</column>
+            <column name="event_id">1</column>
+        </insert>
+        <insert tableName="meeting">
+            <column name="start_time">2020-05-21T12:00:00</column>
+            <column name="end_time">2020-05-21T14:00:00</column>
+            <column name="event_id">1</column>
+            <column name="organizer_id">2</column>
+            <column name="location">Dvorana B2</column>
+        </insert>
+        <insert tableName="invitation">
+            <column name="sender_id">2</column>
+            <column name="recipient_id">1</column>
+            <column name="meeting_id">1</column>
+        </insert>
+        <insert tableName="user_meetings">
+            <column name="user_id">1</column>
+            <column name="meeting_id">1</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>
